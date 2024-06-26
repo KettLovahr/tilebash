@@ -45,4 +45,8 @@ public class Paddle : IDrawable, IObject, IControllable
             X += 6;
         }
     }
+
+    public void Update()
+    {
+    }
 }

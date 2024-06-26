@@ -2,5 +2,6 @@
 
 public interface IObject
 {
+    public void Update();
 
 }

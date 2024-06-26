@@ -26,7 +26,9 @@ public class Game
     private static void InitializeLevel(int level)
     {
         objects.Clear();
-        objects.Add(new Paddle());
+        Paddle paddle = new Paddle();
+        objects.Add(paddle);
+        objects.Add(new Ball(paddle));
     }
 
     private static void HandleInput()
@@ -63,6 +65,7 @@ public class Game
         R.DrawText($"{R.GetTime():f1}", 0, 0, 32, Raylib_cs.Color.White);
 
         foreach (IObject obj in objects) {
+            obj.Update();
             if (obj is IDrawable draw) {
                 draw.Draw();
             }
