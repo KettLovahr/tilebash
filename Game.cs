@@ -30,12 +30,13 @@ public class Game
         _objects.Add(paddle);
         _objects.Add(new Ball(paddle));
 
-        _objects.Add(new Tile(50, 50, 100, 50, Raylib_cs.Color.Lime));
-        _objects.Add(new Tile(100, 50, 100, 50, Raylib_cs.Color.Lime));
-        _objects.Add(new Tile(150, 50, 100, 50, Raylib_cs.Color.Lime));
-        _objects.Add(new Tile(200, 50, 100, 50, Raylib_cs.Color.Lime));
-        _objects.Add(new Tile(250, 50, 100, 50, Raylib_cs.Color.Lime));
-        _objects.Add(new Tile(300, 50, 100, 50, Raylib_cs.Color.Lime));
+        for (int i = 1; i <= 10; i++)
+        {
+            for (int j = 1; j <= 11; j++)
+            {
+                _objects.Add(new Tile(50 * j, 25 * i, 40, 20, Raylib_cs.Color.Lime));
+            }
+        }
     }
 
     private static void HandleInput()
