@@ -2,6 +2,6 @@
 
 public interface IObject
 {
-    public void Update();
+    public void Update(List<IObject> objects);
 
 }

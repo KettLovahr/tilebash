@@ -4,7 +4,7 @@ namespace tilebash;
 public class Game
 {
     private static int _level = 1;
-    private static List<IObject> objects = [];
+    private static List<IObject> _objects = [];
     public static InputMap controls = new InputMap();
 
     public static void InitializeGame()
@@ -25,10 +25,17 @@ public class Game
 
     private static void InitializeLevel(int level)
     {
-        objects.Clear();
+        _objects.Clear();
         Paddle paddle = new Paddle();
-        objects.Add(paddle);
-        objects.Add(new Ball(paddle));
+        _objects.Add(paddle);
+        _objects.Add(new Ball(paddle));
+
+        _objects.Add(new Tile(50, 50, 100, 50, Raylib_cs.Color.Lime));
+        _objects.Add(new Tile(100, 50, 100, 50, Raylib_cs.Color.Lime));
+        _objects.Add(new Tile(150, 50, 100, 50, Raylib_cs.Color.Lime));
+        _objects.Add(new Tile(200, 50, 100, 50, Raylib_cs.Color.Lime));
+        _objects.Add(new Tile(250, 50, 100, 50, Raylib_cs.Color.Lime));
+        _objects.Add(new Tile(300, 50, 100, 50, Raylib_cs.Color.Lime));
     }
 
     private static void HandleInput()
@@ -60,7 +67,7 @@ public class Game
             controls.launchBall = false;
         }
 
-        foreach (IObject obj in objects)
+        foreach (IObject obj in _objects)
         {
             if (obj is IControllable ctrl)
             {
@@ -74,9 +81,9 @@ public class Game
         R.BeginDrawing();
         R.ClearBackground(Raylib_cs.Color.Black);
 
-        foreach (IObject obj in objects)
+        foreach (IObject obj in _objects)
         {
-            obj.Update();
+            obj.Update(_objects);
             if (obj is IDrawable draw)
             {
                 draw.Draw();

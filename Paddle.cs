@@ -3,7 +3,7 @@
 public class Paddle : IDrawable, IObject, IControllable
 {
     private float _x = 320;
-    private float _width = 64;
+    private float _width = 96;
 
     public float X
     {
@@ -46,7 +46,7 @@ public class Paddle : IDrawable, IObject, IControllable
         }
     }
 
-    public void Update()
+    public void Update(List<IObject> objects)
     {
     }
 }

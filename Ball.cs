@@ -18,7 +18,7 @@ public class Ball : IDrawable, IObject, IControllable
         Raylib_cs.Raylib.DrawCircle((int)x, (int)y, _radius, Raylib_cs.Color.Gray);
     }
 
-    public void Update()
+    public void Update(List<IObject> objects)
     {
         if (_launched)
         {
@@ -35,17 +35,21 @@ public class Ball : IDrawable, IObject, IControllable
                 if (y > 450 - _radius && y < 480 && _dirY > 0)
                 {
                     float xOffset = (x - _paddle.X) / _paddle.Width;
-                    float dir = Lerp((float)(-Math.PI * 0.75), (float)(-Math.PI * 0.25), xOffset);
+                    float dir = Lerp((float)(-Math.PI * 0.85), (float)(-Math.PI * 0.15), xOffset);
                     _dirX = (float)Math.Cos(dir);
                     _dirY = (float)Math.Sin(dir);
-                    if (xOffset < 0.1 || xOffset > 0.9)
-                    {
-                        _speed += 0.4f;
-                    }
-                    else
-                    {
-                        _speed += 0.2f;
-                    }
+                    _speed += (xOffset < 0.1 || xOffset > 0.9) ? 0.4f : 0.2f;
+                }
+            }
+
+            foreach (IObject obj in objects)
+            {
+                if (obj is Tile tile)
+                {
+                    if (!tile.Alive) { continue; }
+                    if (x + _radius <= tile.X || x - _radius >= tile.X + tile.Width) { continue; }
+                    if (y + _radius <= tile.Y || y - _radius >= tile.Y + tile.Height) { continue; }
+                    tile.Destroy();
                 }
             }
 
