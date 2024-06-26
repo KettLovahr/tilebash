@@ -49,7 +49,8 @@ public class Ball : IDrawable, IObject, IControllable
                 }
             }
 
-            if (y > 500) {
+            if (y > 500)
+            {
                 _launched = false;
             }
         }
@@ -66,7 +67,8 @@ public class Ball : IDrawable, IObject, IControllable
         {
             _launched = true;
             _speed /= 2;
-            if (_speed < 4) {
+            if (_speed < 4)
+            {
                 _speed = 4;
             }
         }
@@ -77,7 +79,8 @@ public class Ball : IDrawable, IObject, IControllable
         this._paddle = paddle;
     }
 
-    private float Lerp(float from, float to, float weight) {
+    private float Lerp(float from, float to, float weight)
+    {
         return from * (1 - weight) + to * weight;
     }
 }

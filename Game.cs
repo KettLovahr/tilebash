@@ -60,8 +60,10 @@ public class Game
             controls.launchBall = false;
         }
 
-        foreach (IObject obj in objects) {
-            if (obj is IControllable ctrl) {
+        foreach (IObject obj in objects)
+        {
+            if (obj is IControllable ctrl)
+            {
                 ctrl.HandleInput(controls);
             }
         }
@@ -72,9 +74,11 @@ public class Game
         R.BeginDrawing();
         R.ClearBackground(Raylib_cs.Color.Black);
 
-        foreach (IObject obj in objects) {
+        foreach (IObject obj in objects)
+        {
             obj.Update();
-            if (obj is IDrawable draw) {
+            if (obj is IDrawable draw)
+            {
                 draw.Draw();
             }
         }
