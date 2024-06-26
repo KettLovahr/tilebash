@@ -71,7 +71,6 @@ public class Game
     {
         R.BeginDrawing();
         R.ClearBackground(Raylib_cs.Color.Black);
-        R.DrawText($"{R.GetTime():f1}", 0, 0, 32, Raylib_cs.Color.White);
 
         foreach (IObject obj in objects) {
             obj.Update();
