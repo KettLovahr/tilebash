@@ -35,7 +35,7 @@ public class Ball : IDrawable, IObject, IControllable
                 if (y > 450 - _radius && y < 480 && _dirY > 0)
                 {
                     float xOffset = (x - _paddle.X) / _paddle.Width;
-                    double dir = -Math.PI + xOffset * Math.PI;
+                    float dir = Lerp((float)(-Math.PI * 0.75), (float)(-Math.PI * 0.25), xOffset);
                     _dirX = (float)Math.Cos(dir);
                     _dirY = (float)Math.Sin(dir);
                     if (xOffset < 0.1 || xOffset > 0.9)
@@ -65,11 +65,19 @@ public class Ball : IDrawable, IObject, IControllable
         if (input.launchBall && !_launched)
         {
             _launched = true;
+            _speed /= 2;
+            if (_speed < 4) {
+                _speed = 4;
+            }
         }
     }
 
     public Ball(Paddle paddle)
     {
         this._paddle = paddle;
+    }
+
+    private float Lerp(float from, float to, float weight) {
+        return from * (1 - weight) + to * weight;
     }
 }
