@@ -9,7 +9,7 @@ public class Game
 
     public static void InitializeGame()
     {
-        R.InitWindow(640, 480, "Hello, world");
+        R.InitWindow(640, 480, "TILEBASH");
         R.SetTargetFPS(60);
 
         InitializeLevel(_level);
@@ -49,6 +49,15 @@ public class Game
         else
         {
             controls.movePaddleRight = false;
+        }
+
+        if (R.IsKeyDown(Raylib_cs.KeyboardKey.Space))
+        {
+            controls.launchBall = true;
+        }
+        else
+        {
+            controls.launchBall = false;
         }
 
         foreach (IObject obj in objects) {
