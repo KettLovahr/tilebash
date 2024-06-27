@@ -3,7 +3,8 @@ namespace tilebash;
 
 public class Game
 {
-    private static int _level = 1;
+    public static int Score { private set; get; } = 0;
+    public static int Level { private set; get; } = 1;
     private static List<IObject> _objects = [];
     public static InputMap controls = new InputMap();
 
@@ -12,7 +13,7 @@ public class Game
         R.InitWindow(640, 480, "TILEBASH");
         R.SetTargetFPS(60);
 
-        InitializeLevel(_level);
+        InitializeLevel(Level);
 
         while (!R.WindowShouldClose())
         {
@@ -91,7 +92,14 @@ public class Game
             }
         }
 
+        R.DrawText($"{Score}", 20, 20, 32, Raylib_cs.Color.White);
+
         R.EndDrawing();
+    }
+
+    public static void AddScore(int amount)
+    {
+        Score += amount * Level;
     }
 
     private Game() { }
