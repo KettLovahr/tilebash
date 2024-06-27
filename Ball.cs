@@ -25,8 +25,8 @@ public class Ball : IDrawable, IObject, IControllable
             x += _dirX * _speed;
             y += _dirY * _speed;
 
-            if (x > 640 - _radius && _dirX > 0) { _dirX *= -1; _speed += 0.1f; }
-            if (x < _radius && _dirX < 0) { _dirX *= -1; _speed += 0.1f; }
+            if (x > 640 - _radius && _dirX > 0) { _dirX *= -1; }
+            if (x < _radius && _dirX < 0) { _dirX *= -1; }
 
             if (y < _radius && _dirY < 0) { _dirY *= -1; }
 
@@ -38,7 +38,7 @@ public class Ball : IDrawable, IObject, IControllable
                     float dir = Lerp((float)(-Math.PI * 0.85), (float)(-Math.PI * 0.15), xOffset);
                     _dirX = (float)Math.Cos(dir);
                     _dirY = (float)Math.Sin(dir);
-                    _speed += (xOffset < 0.1 || xOffset > 0.9) ? 0.4f : 0.2f;
+                    _speed += (xOffset < 0.1 || xOffset > 0.9) ? 0.2f : 0.1f;
                 }
             }
 
@@ -50,6 +50,10 @@ public class Ball : IDrawable, IObject, IControllable
                     if (x + _radius <= tile.X || x - _radius >= tile.X + tile.Width) { continue; }
                     if (y + _radius <= tile.Y || y - _radius >= tile.Y + tile.Height) { continue; }
                     tile.Destroy();
+                    if (x + _radius > tile.X + tile.Width && _dirX < 0) {_dirX *= -1; }
+                    if (x - _radius < tile.X && _dirX > 0) {_dirX *= -1; }
+                    if (y + _radius > tile.Y + tile.Height && _dirY < 0) {_dirY *= -1; }
+                    if (y - _radius < tile.Y && _dirY > 0) {_dirY *= -1; }
                 }
             }
 
