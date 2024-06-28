@@ -23,7 +23,7 @@ public class Tile : IDrawable, IObject
 
     public void Destroy() {
         Alive = false;
-        Game.AddScore(10);
+        Game.AddScore(10, true);
     }
 
     public Tile(float x, float y, float width, float height, Raylib_cs.Color color) {
