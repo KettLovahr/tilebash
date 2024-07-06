@@ -71,7 +71,8 @@ public class Game
             }
         }
 
-        if (TilesLeft == 0) {
+        if (TilesLeft == 0)
+        {
             Level++;
             InitializeLevel(Level);
         }
@@ -86,12 +87,14 @@ public class Game
     public static void AddScore(int amount, bool tile)
     {
         Score += amount * Level;
-        if (tile) {
+        if (tile)
+        {
             TilesLeft--;
         }
     }
 
-    public static void RegisterInputKey(ref bool field, Raylib_cs.KeyboardKey key) {
+    public static void RegisterInputKey(ref bool field, Raylib_cs.KeyboardKey key)
+    {
         if (R.IsKeyDown(key))
         {
             field = true;

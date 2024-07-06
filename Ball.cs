@@ -50,10 +50,10 @@ public class Ball : IDrawable, IObject, IControllable
                     if (x + _radius <= tile.X || x - _radius >= tile.X + tile.Width) { continue; }
                     if (y + _radius <= tile.Y || y - _radius >= tile.Y + tile.Height) { continue; }
                     tile.Destroy();
-                    if (x + _radius > tile.X + tile.Width && _dirX < 0) {_dirX *= -1; }
-                    if (x - _radius < tile.X && _dirX > 0) {_dirX *= -1; }
-                    if (y + _radius > tile.Y + tile.Height && _dirY < 0) {_dirY *= -1; }
-                    if (y - _radius < tile.Y && _dirY > 0) {_dirY *= -1; }
+                    if (x + _radius > tile.X + tile.Width && _dirX < 0) { _dirX *= -1; }
+                    if (x - _radius < tile.X && _dirX > 0) { _dirX *= -1; }
+                    if (y + _radius > tile.Y + tile.Height && _dirY < 0) { _dirY *= -1; }
+                    if (y - _radius < tile.Y && _dirY > 0) { _dirY *= -1; }
                 }
             }
 
