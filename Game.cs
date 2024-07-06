@@ -44,32 +44,9 @@ public class Game
 
     private static void HandleInput()
     {
-        if (R.IsKeyDown(Raylib_cs.KeyboardKey.Left))
-        {
-            controls.movePaddleLeft = true;
-        }
-        else
-        {
-            controls.movePaddleLeft = false;
-        }
-
-        if (R.IsKeyDown(Raylib_cs.KeyboardKey.Right))
-        {
-            controls.movePaddleRight = true;
-        }
-        else
-        {
-            controls.movePaddleRight = false;
-        }
-
-        if (R.IsKeyDown(Raylib_cs.KeyboardKey.Space))
-        {
-            controls.launchBall = true;
-        }
-        else
-        {
-            controls.launchBall = false;
-        }
+        RegisterInputKey(ref controls.movePaddleLeft, Raylib_cs.KeyboardKey.Left);
+        RegisterInputKey(ref controls.movePaddleRight, Raylib_cs.KeyboardKey.Right);
+        RegisterInputKey(ref controls.launchBall, Raylib_cs.KeyboardKey.Space);
 
         foreach (IObject obj in _objects)
         {
@@ -111,6 +88,17 @@ public class Game
         Score += amount * Level;
         if (tile) {
             TilesLeft--;
+        }
+    }
+
+    public static void RegisterInputKey(ref bool field, Raylib_cs.KeyboardKey key) {
+        if (R.IsKeyDown(key))
+        {
+            field = true;
+        }
+        else
+        {
+            field = false;
         }
     }
 
