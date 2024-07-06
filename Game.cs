@@ -32,7 +32,7 @@ public class Game
         _objects.Add(paddle);
         _objects.Add(new Ball(paddle));
 
-        for (int i = 1; i <= 3 + level; i++)
+        for (int i = 1; i <= 1 + level; i++)
         {
             for (int j = 1; j <= 11; j++)
             {
