@@ -38,11 +38,11 @@ public class Paddle : IDrawable, IObject, IControllable
     {
         if (input.movePaddleLeft)
         {
-            X -= 6;
+            X -= 10;
         }
         if (input.movePaddleRight)
         {
-            X += 6;
+            X += 10;
         }
     }
 

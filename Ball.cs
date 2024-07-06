@@ -11,7 +11,7 @@ public class Ball : IDrawable, IObject, IControllable
     private float _dirX = 0;
     private float _dirY = 1;
     private float _radius = 8;
-    private float _speed = 4;
+    private float _speed = 8;
 
     public void Draw()
     {
@@ -75,9 +75,9 @@ public class Ball : IDrawable, IObject, IControllable
         {
             _launched = true;
             _speed /= 2;
-            if (_speed < 4)
+            if (_speed < 8)
             {
-                _speed = 4;
+                _speed = 8;
             }
         }
     }
