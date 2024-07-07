@@ -95,14 +95,7 @@ public class Game
 
     public static void RegisterInputKey(ref bool field, Raylib_cs.KeyboardKey key)
     {
-        if (R.IsKeyDown(key))
-        {
-            field = true;
-        }
-        else
-        {
-            field = false;
-        }
+        field = R.IsKeyDown(key);
     }
 
     private Game() { }
