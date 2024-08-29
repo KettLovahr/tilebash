@@ -39,6 +39,7 @@ public class Ball : IDrawable, IObject, IControllable
                     _dirX = (float)Math.Cos(dir);
                     _dirY = (float)Math.Sin(dir);
                     _speed += (xOffset < 0.1 || xOffset > 0.9) ? 0.2f : 0.1f;
+                    Game.ResetStreak();
                 }
             }
 

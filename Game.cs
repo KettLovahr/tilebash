@@ -4,6 +4,7 @@ namespace tilebash;
 public class Game
 {
     public static int Score { private set; get; } = 0;
+    public static int Streak { private set; get; } = 1;
     public static int Level { private set; get; } = 1;
     public static int TilesLeft { private set; get; } = 0;
     private static List<IObject> _objects = [];
@@ -86,9 +87,10 @@ public class Game
 
     public static void AddScore(int amount, bool tile)
     {
-        Score += amount * Level;
+        Score += amount * Level * Streak;
         if (tile)
         {
+            Streak++;
             TilesLeft--;
         }
     }
@@ -96,6 +98,11 @@ public class Game
     public static void RegisterInputKey(ref bool field, Raylib_cs.KeyboardKey key)
     {
         field = R.IsKeyDown(key);
+    }
+
+    internal static void ResetStreak()
+    {
+        Streak = 1;
     }
 
     private Game() { }
