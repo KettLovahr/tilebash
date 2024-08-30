@@ -52,18 +52,13 @@ public class Ball : IDrawable, IObject, IControllable
                     if (y + _radius <= tile.Y || y - _radius >= tile.Y + tile.Height) { continue; }
                     tile.Destroy();
                     var dir = Math.Atan2(y - (tile.Y + tile.Height/2), x - (tile.X + tile.Width/2));
-                    Console.WriteLine(dir);
                     if (dir > -Math.PI / 4 && dir <= Math.PI / 4) {
-                        Console.WriteLine("Right");
                         _dirX *= -1;
                     } else if (dir > Math.PI / 4 && dir <= (Math.PI / 4) * 3) {
-                        Console.WriteLine("Bottom");
                         _dirY *= -1;
                     } else if (dir > (Math.PI / 4) * 3 || dir <= -(Math.PI / 4) * 3) {
-                        Console.WriteLine("Left");
                         _dirX *= -1;
                     } else if (dir > -(Math.PI / 4) * 3 && dir <= -(Math.PI / 4)) {
-                        Console.WriteLine("Top");
                         _dirY *= -1;
                     }
                 }
