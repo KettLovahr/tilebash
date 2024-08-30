@@ -51,10 +51,21 @@ public class Ball : IDrawable, IObject, IControllable
                     if (x + _radius <= tile.X || x - _radius >= tile.X + tile.Width) { continue; }
                     if (y + _radius <= tile.Y || y - _radius >= tile.Y + tile.Height) { continue; }
                     tile.Destroy();
-                    if (x + _radius > tile.X + tile.Width && _dirX < 0) { _dirX *= -1; }
-                    if (x - _radius < tile.X && _dirX > 0) { _dirX *= -1; }
-                    if (y + _radius > tile.Y + tile.Height && _dirY < 0) { _dirY *= -1; }
-                    if (y - _radius < tile.Y && _dirY > 0) { _dirY *= -1; }
+                    var dir = Math.Atan2(y - (tile.Y + tile.Height/2), x - (tile.X + tile.Width/2));
+                    Console.WriteLine(dir);
+                    if (dir > -Math.PI / 4 && dir <= Math.PI / 4) {
+                        Console.WriteLine("Right");
+                        _dirX *= -1;
+                    } else if (dir > Math.PI / 4 && dir <= (Math.PI / 4) * 3) {
+                        Console.WriteLine("Bottom");
+                        _dirY *= -1;
+                    } else if (dir > (Math.PI / 4) * 3 || dir <= -(Math.PI / 4) * 3) {
+                        Console.WriteLine("Left");
+                        _dirX *= -1;
+                    } else if (dir > -(Math.PI / 4) * 3 && dir <= -(Math.PI / 4)) {
+                        Console.WriteLine("Top");
+                        _dirY *= -1;
+                    }
                 }
             }
 
