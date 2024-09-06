@@ -2,17 +2,18 @@
 
 public class Tile : IDrawable, IObject
 {
-    public float X {private set; get;}
-    public float Y {private set; get;}
-    public float Width {private set; get;}
-    public float Height {private set; get;}
-    public Raylib_cs.Color Color {private set; get;}
+    public float X { private set; get; }
+    public float Y { private set; get; }
+    public float Width { private set; get; }
+    public float Height { private set; get; }
+    public Raylib_cs.Color Color { private set; get; }
 
-    public bool Alive {private set; get;} = true;
+    public bool Alive { private set; get; } = true;
 
     public void Draw()
     {
-        if (Alive){
+        if (Alive)
+        {
             Raylib_cs.Raylib.DrawRectangle((int)X, (int)Y, (int)Width, (int)Height, Color);
         }
     }
@@ -21,12 +22,14 @@ public class Tile : IDrawable, IObject
     {
     }
 
-    public void Destroy() {
+    public void Destroy()
+    {
         Alive = false;
         Game.AddScore(10, true);
     }
 
-    public Tile(float x, float y, float width, float height, Raylib_cs.Color color) {
+    public Tile(float x, float y, float width, float height, Raylib_cs.Color color)
+    {
         this.X = x;
         this.Y = y;
         this.Width = width;
