@@ -1,8 +1,9 @@
-﻿using R = Raylib_cs.Raylib;
+using R = Raylib_cs.Raylib;
 namespace tilebash;
 
 public class Game
 {
+    private static double ScoreDisplay = 0;
     public static int Score { private set; get; } = 0;
     public static int Streak { private set; get; } = 1;
     public static int Level { private set; get; } = 1;
@@ -78,7 +79,8 @@ public class Game
             InitializeLevel(Level);
         }
 
-        R.DrawText($"{Score}", 20, 20, 32, Raylib_cs.Color.White);
+        ScoreDisplay = Double.Lerp(ScoreDisplay, Score, 0.5);
+        R.DrawText($"{ScoreDisplay:F0}", 20, 20, 32, Raylib_cs.Color.White);
         R.DrawText($"Tiles Left: {TilesLeft}", 20, 60, 16, Raylib_cs.Color.White);
         R.DrawText($"Level: {Level}", 20, 80, 16, Raylib_cs.Color.White);
 
