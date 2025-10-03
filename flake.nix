@@ -19,6 +19,10 @@
             clang
             libclang
 
+            zlib
+            zlib.dev
+            openssl
+
             libGL
             glfw
             xorg.libX11
@@ -46,7 +50,8 @@
 
         devShells.${system}.default = mkShell {
             buildInputs = deps;
-            LD_LIBRARY_PATH = "${lib.makeLibraryPath deps}";
+            LD_LIBRARY_PATH = "${lib.makeLibraryPath (deps ++ [stdenv.cc.cc])}";
+            NIX_LD = "${pkgs.stdenv.cc.libc_bin}/bin/ld.so";
         };
     };
 }
